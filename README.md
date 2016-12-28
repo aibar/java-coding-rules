@@ -1,4 +1,6 @@
-## It's easy to write a bullshit code in Java. This is list of _Must-s_, _Should-s_, appropriate _Not-s_, _Arguments_ and some _Good Ideas_ to code like a Jedi
+# What the fuck is it?
+
+It's easy to write a bullshit code in Java. This is list of _Must-s_, _Should-s_, appropriate _Not-s_, _Arguments_ and some _Good Ideas_ to code like a Jedi
 
 # OOP
 
@@ -57,11 +59,34 @@ It's about mutability. We all know that it's root of many headaches. When we hav
 state we can immediately pass the state when creating an object. But when we have a lot of state
 we create a State objects.
 
-**Hide implementation**
+**Hide implementation**. Use Factors EVERYWHERE. Without compromise.
 
-**BUT** Java is the OOP lang with classes. When creating classes with _new_ we know the
+In Smart OOP world we should not see any Implementation.
+
+    // Not so good as you might thinked
+    Pipeline pipeline = new PipelineImpl();
+
+You can say what a problem we are working with Pipeline interface. True OOP!
+But I see that we are forced to know how to get this Interface. Creating interface
+with new() says nothing to me. Example. You want a cake. In the world "new"
+you will have to create it youself. We have CakeImpl. It has constructor arguments.
+
+    Cake myCake = new CakeImpl(someSugar, someEggs, someChocolate, etc.);
+
+You will not **make** a good cake with this poor information. The key word is **make**.
+With new you can only **create**.
+
+    Cake myCake = Cake.mkSuperCake(someSugar, someEggs, someChocolate, etc.);
+
+"mk" means **make**. Dispatch making a tasty cake to the "Master" interface. I like to use
+word Master instead of Factory. Because factories are dirty and polluting. Master is master.
+He knows his job better than robots in factories.
+But, again you can say I can "insert" making a tasty cake into Impl class. 
+But this logic is broken. How cake can make itself?
+TODO: more arguments and code examples, people will not understand
+
+So, when creating classes with _new_ we know the
 implementation. I _think_ that hiding implementation is a **Good Idea**
-
 
 # Exceptions
 
